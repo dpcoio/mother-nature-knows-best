@@ -14,7 +14,7 @@ public class StrikeRange : MonoBehaviour
     void Start()
     {
         display.transform.localScale = Vector2.one * radius;
-        display.SetActive(false);
+        display.SetActive(true);
     }
 
     // Update is called once per frame

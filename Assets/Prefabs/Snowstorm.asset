@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b294beac1574f0f48a9a84761fb453dc, type: 3}
-  m_Name: Volcano Eruption
+  m_Name: Snowstorm
   m_EditorClassIdentifier: 
-  menuIcon: {fileID: 21300000, guid: 753b593f1a9db3849aaa1695f1a86696, type: 3}
+  menuIcon: {fileID: 21300000, guid: 3054fd806081de84c8d8849f4af69db8, type: 3}
   radius: 0
   coolDown: 0
   maxPower: 0
