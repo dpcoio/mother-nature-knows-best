@@ -6,7 +6,8 @@ using UnityEngine;
 [Serializable]
 public class DisasterRanges {
     public Disaster disaster;
-    public StrikeRange ranges;
+    public TargetArea targetArea;
+    public float currentCoolDown;
 }
 public class DisasterManager : MonoBehaviour
 {
@@ -21,7 +22,44 @@ public class DisasterManager : MonoBehaviour
     }
 
     [Header("Disasters")]
-    public DisasterRanges[] disasters; 
+    public DisasterRanges[] disasters;
+    public GameObject strikeRangePrefab;
+
+    private StrikeRange currentStrikeRange; 
+    private StrikeRange CurrentStrikeRange {
+        get {
+            return currentStrikeRange;
+        }
+        set {
+            if (currentStrikeRange) {
+                Destroy(currentStrikeRange.gameObject);
+            }
+            currentStrikeRange = value;
+        }
+    }
+
+    private TargetArea currentTargetArea;
+    private TargetArea CurrentTargetArea {
+        get {
+            return currentTargetArea;
+        }
+        set {
+            if (currentTargetArea) {
+                currentTargetArea.gameObject.SetActive(false);
+            }
+            currentTargetArea = value;
+            currentTargetArea.gameObject.SetActive(true);
+        }
+    }
+    public void InitiateDisasterAtIndex(int index) {
+        print("AAAAH");
+        DisasterRanges disaster = disasters[index];
+        InitiateDisaster(disaster);
+    }
+    private void InitiateDisaster(DisasterRanges disaster) {
+        CurrentStrikeRange = Instantiate(strikeRangePrefab).GetComponent<StrikeRange>();
+        CurrentTargetArea = disaster.targetArea;
+    }
     // Start is called before the first frame update
     void Awake()
     {
