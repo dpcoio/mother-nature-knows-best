@@ -21,6 +21,10 @@ public class Dialogue : MonoBehaviour
     [Header("playAnim after")]
     public bool needAnim;
 
+    [Header("need wait time")]
+    public bool needWait;
+    public float waitTime;
+
     [Header("disable obj after")]
     public bool needUnable;
     public List<GameObject>  TheUnabled;
@@ -43,25 +47,36 @@ public class Dialogue : MonoBehaviour
 
     void OnEnable()
     {
-      
-
-        var dialogueTexts = new List<DialogData>();
-       
-        for (int i = 0; i < textEntry.Length; i++)
+        if (!needWait)
         {
-           
-         
-            dialogData = new DialogData(textEntry[i], charaEmote);
-            dialogData.isSkippable = skippable;
-            dialogueTexts.Add(dialogData);
-         
-            
-
+            RunDialogue();
+        }
+        else
+        {
+            StartCoroutine(WaitToStart());
         }
 
 
 
-//----------------------------BOOLS HERE--------------------------------------//
+    }
+    void RunDialogue()
+    {
+
+        var dialogueTexts = new List<DialogData>();
+
+        for (int i = 0; i < textEntry.Length; i++)
+        {
+
+
+            dialogData = new DialogData(textEntry[i], charaEmote);
+            dialogData.isSkippable = skippable;
+            dialogueTexts.Add(dialogData);
+
+
+
+        }
+
+        //----------------------------BOOLS HERE--------------------------------------//
         //if need animation
         //if (needAnim) {
         //    dialogueTexts[dialogueTexts.Count - 1].Callback = () => sceneControl.playAnim(); 
@@ -70,7 +85,7 @@ public class Dialogue : MonoBehaviour
         //if need something to be disabled after dialogue
         if (needUnable)
         {
-            dialogueTexts[dialogueTexts.Count - 1].Callback = () =>disableObj();
+            dialogueTexts[dialogueTexts.Count - 1].Callback = () => disableObj();
         }
         if (needEnable)
         {
@@ -89,8 +104,11 @@ public class Dialogue : MonoBehaviour
         //----------------------------BOOLS END HERE--------------------------------------//
 
         dialogManager.Show(dialogueTexts);
-       
-
+    }
+    IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(waitTime);
+        RunDialogue();
     }
 
     void goToSelection()
