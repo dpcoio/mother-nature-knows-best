@@ -527,7 +527,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259331439}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -4152,8 +4152,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disasters:
-  - disaster: {fileID: 0}
-    targetArea: {fileID: 0}
+  - disaster: {fileID: 11400000, guid: 58d3785456819964aa58728d85e958a1, type: 2}
+    targetArea: {fileID: 1324956166}
+    currentCoolDown: 0
+  - disaster: {fileID: 11400000, guid: 6d6ba083ff30f2449800679cd3bf906e, type: 2}
+    targetArea: {fileID: 331041054}
+    currentCoolDown: 0
+  - disaster: {fileID: 11400000, guid: 20e1577b9cc73fb47b5c0caa26904a65, type: 2}
+    targetArea: {fileID: 1505979909}
+    currentCoolDown: 0
+  - disaster: {fileID: 11400000, guid: 5cb2f81a538ed134887ad63d86960ec8, type: 2}
+    targetArea: {fileID: 331041054}
+    currentCoolDown: 0
+  - disaster: {fileID: 11400000, guid: d4b02f151d03f3a4badb1a197254e469, type: 2}
+    targetArea: {fileID: 331041054}
     currentCoolDown: 0
   strikeRangePrefab: {fileID: 0}
 --- !u!4 &1051226398
